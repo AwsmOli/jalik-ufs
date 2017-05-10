@@ -137,7 +137,7 @@ export class Store {
              */
             self.checkToken = function (token, fileId) {
                 check(token, String);
-                check(fileId, String);
+                check(fileId, Match.oneOf(String, Mongo.ObjectID));
                 return Tokens.find({value: token, fileId: fileId}).count() === 1;
             };
 
@@ -148,7 +148,7 @@ export class Store {
              * @param callback
              */
             self.copy = function (fileId, store, callback) {
-                check(fileId, String);
+                check(fileId, Match.oneOf(String, Mongo.ObjectID));
 
                 if (!(store instanceof Store)) {
                     throw new TypeError('store is not an instance of UploadFS.Store');
