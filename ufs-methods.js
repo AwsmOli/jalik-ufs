@@ -46,7 +46,7 @@ if (Meteor.isServer) {
          * @param token
          */
         ufsComplete(fileId, storeName, token) {
-            check(fileId, String);
+            check(fileId, Match.OneOf(String, Mongo.ObjectID));
             check(storeName, String);
             check(token, String);
 
@@ -174,7 +174,7 @@ if (Meteor.isServer) {
          * @returns {*}
          */
         ufsDelete(fileId, storeName, token) {
-            check(fileId, String);
+            check(fileId, Match.OneOf(String, Mongo.ObjectID));
             check(storeName, String);
             check(token, String);
 
@@ -285,7 +285,7 @@ if (Meteor.isServer) {
          * @returns {*}
          */
         ufsStop(fileId, storeName, token) {
-            check(fileId, String);
+            check(fileId, Match.OneOf(String, Mongo.ObjectID));
             check(storeName, String);
             check(token, String);
 
