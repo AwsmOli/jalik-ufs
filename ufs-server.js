@@ -138,7 +138,7 @@ if (Meteor.isServer) {
             allowCORS();
 
             // Get file
-            let fileId = match[2];
+            let fileId = Mongo.ObjectID(match[2]);
             if (store.getCollection().find({_id: fileId}).count() === 0) {
                 res.writeHead(404);
                 res.end();
